@@ -13,7 +13,7 @@ export const fetchClimateData = createAsyncThunk('weather/fetchWeather', async(p
     try{    
         const sanitizedCity = params.city.trim();
         if(sanitizedCity){
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${params.city}&appid=${params.apiKey}&units=metric`);
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${params.city}&appid=${params.apiKey}&units=${params.units}`);
             return response.data;
         }
        

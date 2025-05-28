@@ -7,16 +7,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from './components/Dashboard'
 import 'react-toastify/dist/ReactToastify.css';
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+   const [units, setUnits] = useState('');
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
   return (
     <>
       <div>
-        <Search apikey={apiKey}/>
+        <Search apikey={apiKey} setUnits={setUnits}/>
         </div>
         <div>
-          <Dashboard/>
+          <Dashboard units={units}/>
         </div>
     </>
   )
