@@ -9,18 +9,6 @@ export const fetchGeologicalData = async (params) => {
         console.log(error)
     }
 }
-// export const fetchClimateData = createAsyncThunk('weather/fetchWeather', async(params) =>{
-//     try{    
-//         const sanitizedCity = params.city.trim();
-//         if(sanitizedCity){
-//             const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${params.city}&appid=${params.apiKey}&units=${params.units}`);
-//             return response.data;
-//         }
-
-//     }catch(error){
-//         console.log("Error fetching climate data: ", error);
-//     }
-// })
 
 export const fetchClimateData = createAsyncThunk(
     "weather/fetchWeather",
@@ -39,7 +27,6 @@ export const fetchClimateData = createAsyncThunk(
                 return rejectWithValue("City name is required.");
             }
         } catch (error) {
-            console.log("Error fetching climate data:", error);
             return rejectWithValue(error.response?.data?.message || "Network Error");
         }
     }

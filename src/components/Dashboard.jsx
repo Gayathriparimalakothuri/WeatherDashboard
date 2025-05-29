@@ -17,7 +17,6 @@ const Dashboard = ({ units, apiKey, city }) => {
         }
         if (city) {
             const response = await fetchGeologicalData(geoparams);
-            console.log('resp geo', response)
             setLatitude(response?.[0]?.lat);
             setLongitude(response?.[0]?.lon);
         }
@@ -31,24 +30,22 @@ const Dashboard = ({ units, apiKey, city }) => {
             lon: longitude,
             units: units
         }
-        if (city && latitude&& longitude) {
+        if (city && latitude && longitude) {
             const response = await fetchForeCastData(foreCastParams);
-            console.log('forecast data', response);
             groupForeCastData(response?.list)
         }
     }
 
-    const groupForeCastData = async(list) =>{
-        return list.reduce((groups,item) =>{
+    const groupForeCastData = async (list) => {
+        return list.reduce((groups, item) => {
             let date = item.dt_txt.split(' ')[0]
-            if(!groups[date]){
+            if (!groups[date]) {
                 groups[date] = []
             };
             groups[date].push(item);
-            console.log('groups',groups)
             setForecastGroupedData(groups)
             return groups;
-        },{})
+        }, {})
     };
 
     useEffect(() => {
@@ -66,41 +63,47 @@ const Dashboard = ({ units, apiKey, city }) => {
             </div>}
             {
                 weatherData && (
-                    <div className='d-flex justify-content-center'>
-                        <div className="card  text-start p-4 m-3" style={{ width: '70%' }}>
-                            <p className='text-center fw-bold fs-4'>{weatherData?.name}</p>
-                            <div className="row lh-lg">
-                                <div className="col">
-                                    🌤<strong className='mx-3'>Temperature: </strong>{weatherData?.main?.temp} {units === "metric" ? "°C" : "°F"}
-                                </div>
-                                <div className="col">
-                                    💧 <strong className='mx-3'> Humidity: </strong>{weatherData?.main?.humidity} %
-                                </div>
-                            </div>
-                            <div className="row lh-lg">
-                                <div className="col">
-                                    ⏲<strong className='mx-3'>Pressure: </strong>  {weatherData?.main?.pressure} hPa
-                                </div>
-                                <div className="col">
-                                    🌡<strong className='mx-3'>Feels Like: </strong>  {weatherData?.main?.feels_like} {units === "metric" ? "°C" : "°F"}
-                                </div>
-                            </div>
-                            <div className="row lh-lg">
-                                <div className="col">
-                                    👁<strong className='mx-3'>Visibility: </strong>  {weatherData?.visibility} m
-                                </div>
-                                <div className="col">
-                                    💨<strong className='mx-3'>Wind Speed: </strong>  {weatherData?.wind?.speed} {units === "metric" ? "m/s" : "miles/hr"}
+                    <div className="container my-5">
+                        <div className="d-flex justify-content-center">
+                            <div className="card text-start p-4 m-3 w-100" style={{ maxWidth: '900px' }}>
+                                <p className="text-center fw-bold fs-4 mb-4">{weatherData?.name}</p>
+
+                                <div className="row gy-3">
+                                    <div className="col-12 col-md-6">
+                                        🌡 <strong className="mx-2">Temperature:</strong>
+                                        {weatherData?.main?.temp} {units === "metric" ? "°C" : "°F"}
+                                    </div>
+                                    <div className="col-12 col-md-6">
+                                        💧 <strong className="mx-2">Humidity:</strong>
+                                        {weatherData?.main?.humidity}%
+                                    </div>
+                                    <div className="col-12 col-md-6">
+                                        ⏲ <strong className="mx-2">Pressure:</strong>
+                                        {weatherData?.main?.pressure} hPa
+                                    </div>
+                                    <div className="col-12 col-md-6">
+                                        🔥 <strong className="mx-2">Feels Like:</strong>
+                                        {weatherData?.main?.feels_like} {units === "metric" ? "°C" : "°F"}
+                                    </div>
+                                    <div className="col-12 col-md-6">
+                                        👁 <strong className="mx-2">Visibility:</strong>
+                                        {weatherData?.visibility} m
+                                    </div>
+                                    <div className="col-12 col-md-6">
+                                        💨 <strong className="mx-2">Wind Speed:</strong>
+                                        {weatherData?.wind?.speed} {units === "metric" ? "m/s" : "miles/hr"}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 )
             }
             {
-              weatherData &&  forecastGroupedData && (
-                    <div className='my-4'>
-                        <Forecast  groupedData={forecastGroupedData} units={units}/>
+                weatherData && forecastGroupedData && (
+                    <div className='my-5'>
+                        <Forecast groupedData={forecastGroupedData} units={units} />
                     </div>
                 )
             }
