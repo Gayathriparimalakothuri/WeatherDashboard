@@ -89,7 +89,7 @@ const Search = ({ apikey, setUnits, setCity }) => {
                 </div>
             </div>
 
-            <h1 className='title-header m-3'> <span style={{ fontSize: '34px' }}> ⛅</span> Weather Dashboard</h1>
+            <h1 className='title-header m-3'> <span style={{ fontSize: '34px' }}> ⛅</span> ClimaTrack Dashboard</h1>
             <form className='d-flex justify-content-center align-items-center m-3' >
                 <input type="text" placeholder="Search for a city..." onChange={handleSearchInput} className='rounded bc-blue text-primary' />
                 <button className='ms-3 rounded text-primary bc-blue' type="submit" onClick={getData} >Search</button>

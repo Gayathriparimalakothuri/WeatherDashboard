@@ -1,4 +1,4 @@
-# 🌦️ Weather Dashboard 🌦️
+# 🌦️ ClimaTrack  Dashboard 🌦️
 
 A responsive and interactive weather dashboard built using **React JS**, powered by **Redux** for state management, **Recharts** for data visualization, and **Bootstrap** for styling. The application fetches real-time weather and forecast data using the **OpenWeather API**. Users can search for any city worldwide, toggle between Celsius and Fahrenheit, and view detailed 5-day, 3-hourly weather forecasts with an interactive graph and tabbed views.
 
