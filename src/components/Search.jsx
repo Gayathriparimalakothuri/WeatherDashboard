@@ -10,6 +10,7 @@ const Search = ({ apikey, setUnits, setCity }) => {
     const [measurement, setMeasurement] = useState("metric")
     const dispatch = useDispatch();
 
+    // Debounce function
     const debounce = (func, delay) => {
         let timeout;
         return function (...args) {
@@ -24,15 +25,18 @@ const Search = ({ apikey, setUnits, setCity }) => {
             setCity(value)
         }, 500), []
     )
+    
+    // MEthod handles to set the search input 
     const handleSearchInput = (e) => {
         setSearchInput(e.target.value);
     }
+
+    // MEthod handels to fetch the current weather information
     const getData = async (e) => {
         e?.preventDefault();
         debouncedSetCity(searchInput);
         if (searchInput.trim() === "") {
             toast.warn("Please enter a city name.");
-            // setSearchInput("hyderabad")
         }
 
         let params = {
@@ -51,15 +55,10 @@ const Search = ({ apikey, setUnits, setCity }) => {
         }
     }
 
+    // Handles the change of the units
     const handleChange = (e) => {
         setMeasurement(e.target.value)
     }
-    // useEffect(() => {
-    //     getData(); // initial fetch
-    //     const interval = setInterval(getData, 30000); // poll every 30 sec
-    //     return () => clearInterval(interval); // clean up when component unmounts
-    // }, []);
-
     useEffect(() => {
         getData();
         setUnits(measurement);

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+// API for fetch geological data
 export const fetchGeologicalData = async (params) => {
     try {
         const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${params.city}&limit=1&appid=${params.apiKey}`);
@@ -10,6 +11,7 @@ export const fetchGeologicalData = async (params) => {
     }
 }
 
+// API to store the current weather information in store
 export const fetchClimateData = createAsyncThunk(
     "weather/fetchWeather",
     async (params, { rejectWithValue }) => {
@@ -19,9 +21,6 @@ export const fetchClimateData = createAsyncThunk(
                 const response = await axios.get(
                     `https://api.openweathermap.org/data/2.5/weather?q=${sanitizedCity}&appid=${params.apiKey}&units=${params.units}`
                 );
-                // const response = await axios.get(
-                //   `https://api.openweathermap.org/data/2.5/forecast?lat=${params.lat}&lon=${params.lon}&appid=${params.apiKey}&units=${params.units}`
-                // );
                 return response.data;
             } else {
                 return rejectWithValue("City name is required.");
@@ -32,6 +31,7 @@ export const fetchClimateData = createAsyncThunk(
     }
 );
 
+//API to call the 5 days 3 hourly forecast data
 export const fetchForeCastData = async (params,) => {
     try {
         const sanitizedCity = params.city.trim();

@@ -10,6 +10,7 @@ const Dashboard = ({ units, apiKey, city }) => {
     const [longitude, setLongitude] = useState(null)
     const [forecastGroupedData, setForecastGroupedData] = useState(null);
 
+    // MEthod handles to load the geological data(latitude,longitude) based on city 
     const loadGeologicalData = async () => {
         let geoparams = {
             city: city,
@@ -22,6 +23,7 @@ const Dashboard = ({ units, apiKey, city }) => {
         }
     }
 
+    // MEthod handles to fetch the 5days 3hourly forecast data
     const loadForeCastData = async () => {
         let foreCastParams = {
             city: city,
@@ -36,6 +38,7 @@ const Dashboard = ({ units, apiKey, city }) => {
         }
     }
 
+    // MEthod handles to group the forecast data based on date
     const groupForeCastData = async (list) => {
         return list.reduce((groups, item) => {
             let date = item.dt_txt.split(' ')[0]

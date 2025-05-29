@@ -15,11 +15,15 @@ const Forecast = ({ groupedData, units }) => {
     const dates = groupedData && Object.keys(groupedData);
     const [activeTab, setActiveTab] = useState(dates[0]);
     const [tempData, setTempData] = useState(null);
+
+    // Fromates the date
     const formatDate = (dateStr) => {
         const options = { weekday: "short", month: "short", day: "numeric" };
         const date = new Date(dateStr);
         return date.toLocaleDateString(undefined, options);
     }
+
+    // MEthod handles to fetch the tempertaure data based on the grouped data from dashboard
     const fetchTemperatureData = () => {
         const temperatureData = {}
         Object.keys(groupedData).forEach(date => {
