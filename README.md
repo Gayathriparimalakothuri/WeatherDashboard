@@ -1,12 +1,49 @@
-# React + Vite
+# 🌦️ Weather Dashboard 🌦️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and interactive weather dashboard built using **React JS**, powered by **Redux** for state management, **Recharts** for data visualization, and **Bootstrap** for styling. The application fetches real-time weather and forecast data using the **OpenWeather API**. Users can search for any city worldwide, toggle between Celsius and Fahrenheit, and view detailed 5-day, 3-hourly weather forecasts with an interactive graph and tabbed views.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Project Description
 
-## Expanding the ESLint configuration
+This Weather Dashboard allows users to:
+- Search for a city and view its current weather details.
+- Toggle between **Celsius** and **Fahrenheit** temperature units.
+- Visualize a **5-day, 3-hourly temperature forecast** using interactive graphs.
+- Browse weather details for each day via **tab switching**.
+- Display additional data such as **visibility, sea level, humidity, pressure**, and more.
+- Receive error alerts for invalid or unknown city names using **react-toastify**.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The project leverages three endpoints from the **OpenWeather API**:
+1. Fetch current weather data based on user input.
+2. Get the **latitude and longitude** for the searched city.
+3. Fetch **5-day, 3-hourly forecast data** using the retrieved coordinates.
+
+---
+
+## ✨ Features
+
+- 🔍 **Search Weather** by city name.
+- 🌡️ Toggle between **Metric (°C)** and **Imperial (°F)** units.
+- 📊 **Recharts graphs** displaying temperature trends.
+- 📅 **Tabs to switch days** and view specific weather forecasts.
+- 📄 Forecast table showing detailed data for every 3-hour slot.
+- ⚠️ **Toast notifications** for errors and alerts.
+- ✅ **Error handling** for invalid inputs or API issues.
+- 📱 Fully **responsive** design using **Bootstrap**.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React JS**
+- **Redux**
+- **Recharts**
+- **Bootstrap**
+- **React-Toastify**
+- **OpenWeather API**
+
+---
+
+## 📁 Project Structure Overview
+
