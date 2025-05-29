@@ -9,15 +9,16 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const [count, setCount] = useState(0);
    const [units, setUnits] = useState('');
+   const [city,setCity] = useState('');
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
   return (
     <>
       <div>
-        <Search apikey={apiKey} setUnits={setUnits}/>
+        <Search apikey={apiKey} setUnits={setUnits} setCity={setCity}/>
         </div>
         <div>
-          <Dashboard units={units}/>
+          <Dashboard units={units} apiKey={apiKey} city={city}/>
         </div>
     </>
   )

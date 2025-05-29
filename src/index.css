@@ -37,3 +37,8 @@ input:focus-visible, input:hover{
   outline: #0daaeb !important;
   color: rgb(5, 137, 177);
 }
+
+.forecast{
+  overflow-Y: auto;
+  overflow-x: hidden;
+}
